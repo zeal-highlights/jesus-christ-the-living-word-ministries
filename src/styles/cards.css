@@ -1,0 +1,45 @@
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.info-card {
+  padding: 30px 26px 32px;
+  border-radius: 20px;
+  background: var(--navy);
+  color: #fff;
+}
+.info-card-deep {
+  background: var(--deep-navy);
+}
+.info-card small {
+  font: 700 0.72rem/1 var(--font-ui);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+.info-card h3 {
+  margin: 12px 0 8px;
+  font: 700 1.6rem/1.1 var(--font-sans);
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.info-card p {
+  font-size: 1.06rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+.info-card a {
+  color: var(--gold-bright);
+}
+.info-card .contact-list a {
+  color: #fff;
+}
+.info-card .contact-list a:hover {
+  color: var(--gold-bright);
+}
+
+@media (max-width: 800px) {
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+}

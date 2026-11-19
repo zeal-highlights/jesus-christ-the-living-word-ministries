@@ -45,7 +45,8 @@ img {
 h1,
 h2,
 h3,
-p {
+p,
+figure {
   margin: 0;
 }
 
@@ -160,6 +161,15 @@ button:focus-visible {
   opacity: 1;
 }
 
+/* Inner pages also lift sections slightly as they appear */
+.inner-page .reveal {
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.inner-page .reveal.is-visible {
+  transform: none;
+}
+
 /* Hero items that rise in once the loading screen has gone */
 .rise-in {
   opacity: 0;
@@ -185,6 +195,7 @@ button:focus-visible {
     scroll-behavior: auto;
   }
   .reveal,
+  .inner-page .reveal,
   .rise-in {
     opacity: 1;
     transform: none;

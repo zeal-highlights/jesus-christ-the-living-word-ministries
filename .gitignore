@@ -1,2 +1,4 @@
 node_modules
 dist
+_archive/
+.DS_Store

@@ -1,38 +1,26 @@
-import { useIntroFinished } from "./hooks/useIntroFinished.js";
-import LoadingScreen from "./components/LoadingScreen.jsx";
-import SiteHeader from "./components/SiteHeader.jsx";
-import Hero from "./components/Hero.jsx";
-import SundayGatherings from "./components/SundayGatherings.jsx";
-import CityBand from "./components/CityBand.jsx";
-import Pillars from "./components/Pillars.jsx";
-import VerseBand from "./components/VerseBand.jsx";
-import NewVisitors from "./components/NewVisitors.jsx";
-import Beliefs from "./components/Beliefs.jsx";
-import WeeklySchedule from "./components/WeeklySchedule.jsx";
-import Anniversary from "./components/Anniversary.jsx";
-import CallToAction from "./components/CallToAction.jsx";
-import SiteFooter from "./components/SiteFooter.jsx";
+import { Route, Routes } from "react-router-dom";
+import SiteLayout from "./components/SiteLayout.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import GatheringsPage from "./pages/GatheringsPage.jsx";
+import NextStepsPage from "./pages/NextStepsPage.jsx";
+import BeliefsPage from "./pages/BeliefsPage.jsx";
+import StoryPage from "./pages/StoryPage.jsx";
+import VisitPage from "./pages/VisitPage.jsx";
 
 export default function App() {
-  const introFinished = useIntroFinished();
-
   return (
-    <div className={introFinished ? "app intro-finished" : "app"}>
-      <LoadingScreen />
-      <SiteHeader />
-      <main id="top">
-        <Hero />
-        <SundayGatherings />
-        <CityBand />
-        <Pillars />
-        <VerseBand />
-        <NewVisitors />
-        <Beliefs />
-        <WeeklySchedule />
-        <Anniversary />
-        <CallToAction />
-      </main>
-      <SiteFooter />
-    </div>
+    <Routes>
+      <Route element={<SiteLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="gatherings" element={<GatheringsPage />} />
+        <Route path="next-steps" element={<NextStepsPage />} />
+        <Route path="beliefs" element={<BeliefsPage />} />
+        <Route path="story" element={<StoryPage />} />
+        <Route path="visit" element={<VisitPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Route>
+    </Routes>
   );
 }

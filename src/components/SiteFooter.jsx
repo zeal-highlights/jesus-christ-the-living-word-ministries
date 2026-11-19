@@ -1,4 +1,5 @@
-import { footerNavigation, siteInfo } from "../data/siteInfo.js";
+import { Link } from "react-router-dom";
+import { footerNavigation, routes, siteInfo } from "../data/siteInfo.js";
 
 function PhoneIcon() {
   return (
@@ -17,20 +18,36 @@ function EmailIcon() {
   );
 }
 
+/** Phone and email links with icons; reused in the footer and on the Visit page. */
+export function ContactLinks() {
+  return (
+    <p className="contact-list">
+      <a href={siteInfo.phoneLink}>
+        <PhoneIcon />
+        {siteInfo.phoneDisplay}
+      </a>
+      <a href={`mailto:${siteInfo.email}`}>
+        <EmailIcon />
+        {siteInfo.email}
+      </a>
+    </p>
+  );
+}
+
 export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="container footer-columns">
         <div>
-          <a className="footer-logo" href="#top" aria-label="Home">
+          <Link className="footer-logo" to={routes.home} aria-label="Home">
             <img src="/images/logo.jpg" alt="" width="76" height="76" loading="lazy" />
-          </a>
+          </Link>
           <p className="footer-name">
             Jesus Christ the Living Word
             <br />
             {siteInfo.subtitle}
           </p>
-          <small>{siteInfo.motto}</small>
+          <small className="footer-tagline">{siteInfo.motto}</small>
         </div>
 
         <div>
@@ -46,24 +63,15 @@ export default function SiteFooter() {
 
         <div>
           <h4>Contact</h4>
-          <p className="contact-list">
-            <a href={siteInfo.phoneLink}>
-              <PhoneIcon />
-              {siteInfo.phoneDisplay}
-            </a>
-            <a href={`mailto:${siteInfo.email}`}>
-              <EmailIcon />
-              {siteInfo.email}
-            </a>
-          </p>
+          <ContactLinks />
         </div>
 
         <nav className="footer-links" aria-label="Footer">
           <h4>Explore</h4>
           {footerNavigation.map((link) => (
-            <a key={link.href} href={link.href}>
+            <Link key={link.to} to={link.to}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

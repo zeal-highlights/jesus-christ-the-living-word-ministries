@@ -1,0 +1,45 @@
+/* Hero at the top of the inner pages: navy-toned photo, centred title */
+.page-hero {
+  text-align: center;
+}
+.page-hero::after {
+  background: rgba(13, 24, 54, 0.4);
+}
+.page-hero > .container {
+  display: grid;
+  justify-items: center;
+  padding: 130px 0 120px;
+  animation: page-hero-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.page-hero .hero-cross {
+  margin-bottom: 22px;
+}
+.page-hero .eyebrow {
+  margin-bottom: 16px;
+}
+.page-hero h1 {
+  max-width: none;
+  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+  line-height: 0.98;
+}
+.page-hero h1 .accent {
+  display: block;
+}
+.page-hero-subtitle {
+  max-width: 30em;
+  margin-top: 20px;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+@keyframes page-hero-rise {
+  from { opacity: 0; transform: translateY(26px); }
+}
+@media (max-width: 800px) {
+  .page-hero > .container {
+    padding: 110px 0 100px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-hero > .container {
+    animation: none;
+  }
+}

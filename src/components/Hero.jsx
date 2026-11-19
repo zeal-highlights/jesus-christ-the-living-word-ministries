@@ -1,7 +1,6 @@
-import { heroTickerWords } from "../data/content.js";
+import { Link } from "react-router-dom";
+import Ticker from "./Ticker.jsx";
 import { planAVisitLink } from "../data/siteInfo.js";
-
-const TICKER_REPEATS = 5;
 
 export default function Hero() {
   return (
@@ -22,26 +21,15 @@ export default function Hero() {
           A church family in Canberra. Sundays at 3:30 PM.
         </p>
         <div className="hero-actions rise-in">
-          <a className="pill-button pill-button-gold" href={planAVisitLink.href}>
+          <Link className="pill-button pill-button-gold" to={planAVisitLink.to}>
             {planAVisitLink.label}
-          </a>
+          </Link>
           <a className="pill-button pill-button-ghost" href="#beliefs">
             What We Believe
           </a>
         </div>
       </div>
-
-      <div className="ticker" aria-hidden="true">
-        <p>
-          {Array.from({ length: TICKER_REPEATS }, (_, round) =>
-            heroTickerWords.map((word) => (
-              <span key={`${round}-${word}`}>
-                {word} <i>and</i>{" "}
-              </span>
-            ))
-          )}
-        </p>
-      </div>
+      <Ticker />
     </section>
   );
 }

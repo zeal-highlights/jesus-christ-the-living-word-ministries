@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal.jsx";
 import { planAVisitLink } from "../data/siteInfo.js";
 
@@ -25,9 +26,9 @@ export default function NewVisitors() {
             If you are new to our community, we would love to tell you more about our church
             family and the ways you can get involved.
           </p>
-          <a className="button-outline" href={planAVisitLink.href}>
+          <Link className="button-outline" to={planAVisitLink.to}>
             Learn More
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

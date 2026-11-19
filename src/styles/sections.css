@@ -94,3 +94,14 @@
     transition: none;
   }
 }
+
+.single-photo figcaption {
+  margin-top: 12px;
+  font: 700 0.74rem/1 var(--font-sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.map-section {
+  padding-top: 0;
+}

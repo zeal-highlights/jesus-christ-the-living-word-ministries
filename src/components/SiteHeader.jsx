@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { useScrolled } from "../hooks/useScrolled.js";
-import { mainNavigation, planAVisitLink, siteInfo } from "../data/siteInfo.js";
+import { mainNavigation, planAVisitLink, routes, siteInfo } from "../data/siteInfo.js";
 
 export default function SiteHeader() {
   const isScrolled = useScrolled();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
+  useEffect(() => {
+    const onKeyDown = (event) => event.key === "Escape" && setIsMenuOpen(false);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     <header className={isScrolled ? "site-header is-scrolled" : "site-header"}>
       <div className="header-bar">
-        <a className="brand" href="#top" aria-label={`${siteInfo.fullName}, home`}>
+        <Link className="brand" to={routes.home} aria-label={`${siteInfo.fullName}, home`}>
           <img src="/images/logo.jpg" alt="" width="58" height="58" />
           <span className="brand-text">
             <span className="brand-name">{siteInfo.name}</span>
             <span className="brand-subtitle">{siteInfo.subtitle}</span>
           </span>
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -36,13 +43,13 @@ export default function SiteHeader() {
           aria-label="Main"
         >
           {mainNavigation.map((link) => (
-            <a key={link.href} href={link.href} onClick={closeMenu}>
+            <NavLink key={link.to} to={link.to} onClick={closeMenu}>
               {link.label}
-            </a>
+            </NavLink>
           ))}
-          <a className="nav-cta" href={planAVisitLink.href} onClick={closeMenu}>
+          <NavLink className="nav-cta" to={planAVisitLink.to} onClick={closeMenu}>
             {planAVisitLink.label}
-          </a>
+          </NavLink>
         </nav>
       </div>
     </header>

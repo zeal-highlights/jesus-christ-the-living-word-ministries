@@ -62,7 +62,7 @@
   gap: 12px;
 }
 
-.ticker {
+.hero .ticker {
   position: absolute;
   z-index: 3;
   left: 0;
@@ -76,13 +76,13 @@
   background: var(--gold);
   color: var(--deep-navy);
 }
-.ticker p {
+.hero .ticker p {
   font: 800 2rem/1 var(--font-sans);
   letter-spacing: -0.02em;
   text-transform: uppercase;
   animation: ticker-scroll 60s linear infinite;
 }
-.ticker i {
+.hero .ticker i {
   margin: 0 26px;
   font: italic 400 2.2rem/1 var(--font-serif);
   text-transform: none;
@@ -95,13 +95,13 @@
   .hero > .container {
     padding: 110px 0 96px;
   }
-  .ticker {
+  .hero .ticker {
     height: 56px;
   }
-  .ticker p {
+  .hero .ticker p {
     font-size: 1.35rem;
   }
-  .ticker i {
+  .hero .ticker i {
     margin: 0 16px;
     font-size: 1.5rem;
   }
@@ -113,7 +113,7 @@
     transform: none;
     transition: none;
   }
-  .ticker p {
+  .hero .ticker p {
     animation: none;
   }
 }

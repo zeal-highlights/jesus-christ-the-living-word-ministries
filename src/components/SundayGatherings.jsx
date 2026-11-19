@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal.jsx";
 import { sundayCollagePhotos } from "../data/content.js";
-import { siteInfo } from "../data/siteInfo.js";
+import { routes, siteInfo } from "../data/siteInfo.js";
 
 export default function SundayGatherings() {
   return (
@@ -27,9 +28,9 @@ export default function SundayGatherings() {
           <p>
             <b>Location:</b> {siteInfo.fullAddress}
           </p>
-          <a className="button-outline" href="gatherings.html">
+          <Link className="button-outline" to={routes.gatherings}>
             More Information
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

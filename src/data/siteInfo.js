@@ -12,20 +12,32 @@ export const siteInfo = {
   email: "jcthelivingword@gmail.com",
   directionsUrl:
     "https://www.google.com/maps/search/?api=1&query=86+Ainsworth+Street+Mawson+ACT",
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=86+Ainsworth+Street,+Mawson+ACT&output=embed",
+};
+
+export const routes = {
+  home: "/",
+  about: "/about",
+  gatherings: "/gatherings",
+  nextSteps: "/next-steps",
+  beliefs: "/beliefs",
+  story: "/story",
+  visit: "/visit",
 };
 
 export const mainNavigation = [
-  { label: "About", href: "about.html" },
-  { label: "Gatherings", href: "gatherings.html" },
-  { label: "Next Steps", href: "next-steps.html" },
-  { label: "What We Believe", href: "beliefs.html" },
-  { label: "Our Story", href: "story.html" },
+  { label: "About", to: routes.about },
+  { label: "Gatherings", to: routes.gatherings },
+  { label: "Next Steps", to: routes.nextSteps },
+  { label: "What We Believe", to: routes.beliefs },
+  { label: "Our Story", to: routes.story },
 ];
 
-export const planAVisitLink = { label: "Plan a Visit", href: "visit.html" };
+export const planAVisitLink = { label: "Plan a Visit", to: routes.visit };
 
 export const footerNavigation = [
-  { label: "Home", href: "#top" },
+  { label: "Home", to: routes.home },
   ...mainNavigation,
   planAVisitLink,
 ];

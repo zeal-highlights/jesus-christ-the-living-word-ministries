@@ -62,42 +62,69 @@ export const weeklySchedule = [
   },
 ];
 
-// `layout` controls how big the photo is in the mosaic: "large", "standard" or "wide".
+// `layout` sets how big a photo is in the mosaic:
+// "standard" (1x1), "wide" (2x1), "tall" (1x2), "big" (2x2) or "most" (3x2).
 export const anniversaryPhotos = [
+  { src: "/images/anniv/dance.jpg", caption: "The tambourine dance team", label: "Praise", layout: "big" },
+  { src: "/images/anniv/kids-group.jpg", caption: "The children of the church", label: "Children", layout: "standard" },
+  { src: "/images/anniv/family-group.jpg", caption: "Families gathered for a photo", label: "Family", layout: "standard" },
+  { src: "/images/anniv/presentation.jpg", caption: "A presentation on stage", label: "Honour", layout: "wide" },
+  { src: "/images/anniv/dance-ribbons.jpg", caption: "Dancers with ribbons", label: "Dance", layout: "wide" },
+  { src: "/images/anniv/stage-speaker.jpg", caption: "The stage during the celebration", label: "Welcome", layout: "wide" },
+];
+
+export const storyPhotos = [
+  { src: "/images/anniv/worship-team.jpg", caption: "The worship team opens the celebration", label: "Worship", layout: "big" },
+  { src: "/images/anniv/dance-ribbons.jpg", caption: "Dancers with ribbons", label: "Dance", layout: "standard" },
+  { src: "/images/anniv/kids-group.jpg", caption: "The children of the church", label: "Children", layout: "standard" },
+  { src: "/images/anniv/family-group.jpg", caption: "Families gathered for a photo", label: "Family", layout: "wide" },
+  { src: "/images/anniv/shared-table.jpg", caption: "The shared meal", label: "Fellowship", layout: "tall" },
+  { src: "/images/anniv/presentation.jpg", caption: "A presentation on stage", label: "Honour", layout: "standard" },
+  { src: "/images/anniv/stage-speaker.jpg", caption: "The stage during the celebration", label: "Welcome", layout: "standard" },
+  { src: "/images/anniv/preaching.jpg", caption: "Preaching beside the church banner", label: "The Word", layout: "tall", focus: "center 22%" },
+  { src: "/images/anniv/dance.jpg", caption: "The tambourine dance team", label: "Praise", layout: "wide" },
+  { src: "/images/anniv/laughter.jpg", caption: "Sharing a laugh", label: "Joy", layout: "tall", focus: "center 38%" },
+  { src: "/images/anniv/stage-wide.jpg", caption: "The room during worship", label: "Together", layout: "most", focus: "center 55%" },
+];
+
+export const nextStepsFirstSteps = [
   {
-    src: "/images/anniv/dance.jpg",
-    caption: "The tambourine dance team",
-    label: "Praise",
-    layout: "large",
+    step: "Step one",
+    title: "Come on Sunday",
+    text: "Join us at 3:30 PM at 86 Ainsworth Street, Mawson.",
+    link: { label: "Plan a visit", to: "/visit" },
   },
   {
-    src: "/images/anniv/kids-group.jpg",
-    caption: "The children of the church",
-    label: "Children",
-    layout: "standard",
+    step: "Step two",
+    title: "Join a Bible study",
+    text: "Combined, youth and cell group studies meet every fortnight.",
+    link: { label: "See the times", to: "/gatherings" },
   },
   {
-    src: "/images/anniv/family-group.jpg",
-    caption: "Families gathered for a photo",
-    label: "Family",
-    layout: "standard",
+    step: "Step three",
+    title: "Pray with us",
+    text: "The prayer meeting gathers on Thursdays at 86 Ainsworth Street.",
+  },
+];
+
+export const visitQuestions = [
+  {
+    question: "Do I need to be a Christian to come?",
+    answer: "No. Whoever you are and whatever you believe, you are welcome to come and see.",
   },
   {
-    src: "/images/anniv/presentation.jpg",
-    caption: "A presentation on stage",
-    label: "Honour",
-    layout: "wide",
+    question: "Can I bring my children?",
+    answer:
+      "Yes. Children and young people are part of our church family, and families are welcome every Sunday.",
   },
   {
-    src: "/images/anniv/dance-ribbons.jpg",
-    caption: "Dancers with ribbons",
-    label: "Dance",
-    layout: "wide",
+    question: "What else happens during the week?",
+    answer:
+      "We meet for prayer on Thursdays and for Bible study every fortnight. See the Gatherings page for the full list.",
   },
   {
-    src: "/images/anniv/stage-speaker.jpg",
-    caption: "The stage during the celebration",
-    label: "Welcome",
-    layout: "wide",
+    question: "What does the church believe?",
+    answer:
+      "Our Statement of Faith sets out seven truths we stand on. You can read it on the What We Believe page.",
   },
 ];

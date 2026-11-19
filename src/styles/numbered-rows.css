@@ -1,0 +1,73 @@
+/* Big numbered rows (the four words, the seven beliefs) */
+.numbered-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1.5px solid var(--ink);
+}
+.numbered-rows li {
+  display: grid;
+  grid-template-columns: 60px 1fr 1.3fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-top: 1.5px solid var(--ink);
+}
+.numbered-rows span {
+  font: 700 0.8rem/1 var(--font-sans);
+  letter-spacing: 0.08em;
+  color: var(--grey);
+}
+.numbered-rows h3 {
+  font: 700 clamp(1.7rem, 3.4vw, 2.6rem) / 1 var(--font-sans);
+  letter-spacing: -0.03em;
+}
+.numbered-rows li:nth-child(even) h3 {
+  font: italic 400 clamp(1.9rem, 3.8vw, 2.9rem) / 1 var(--font-serif);
+  letter-spacing: -0.01em;
+}
+.section-navy .numbered-rows,
+.section-navy .numbered-rows li {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.section-navy .numbered-rows span {
+  color: var(--gold-bright);
+}
+.section-navy .numbered-rows li:nth-child(even) h3 {
+  color: var(--gold-bright);
+}
+
+/* Beliefs version: an icon instead of the number; icons draw themselves on reveal */
+.numbered-rows-icons li {
+  align-items: center;
+}
+.numbered-rows-icons .belief-icon {
+  width: 38px;
+  height: 38px;
+  stroke: var(--gold-text);
+}
+.numbered-rows-icons .belief-icon path,
+.numbered-rows-icons .belief-icon circle {
+  transition: stroke-dashoffset 1.6s ease 0.3s;
+}
+.numbered-rows-icons.is-visible .belief-icon path,
+.numbered-rows-icons.is-visible .belief-icon circle {
+  stroke-dashoffset: 0;
+}
+
+@media (max-width: 800px) {
+  .numbered-rows li {
+    grid-template-columns: 34px 1fr;
+    gap: 6px 12px;
+  }
+  .numbered-rows li p {
+    grid-column: 2;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .numbered-rows-icons .belief-icon path,
+  .numbered-rows-icons .belief-icon circle {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+}

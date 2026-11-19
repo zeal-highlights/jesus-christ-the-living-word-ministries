@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 const MIN_INTRO_MS = 2700; // how long the loading animation takes to play
 const MAX_INTRO_MS = 6000; // never keep the loading screen up longer than this
 
+// The loading screen plays once per visit, not every time someone returns to the home page.
+let introAlreadyPlayed = false;
+
 /** True once the loading animation has played and the page has finished loading. */
 export function useIntroFinished() {
-  const [finished, setFinished] = useState(false);
+  const [finished, setFinished] = useState(introAlreadyPlayed);
 
   useEffect(() => {
-    const finish = () => setFinished(true);
+    if (introAlreadyPlayed) return;
+    const finish = () => {
+      introAlreadyPlayed = true;
+      setFinished(true);
+    };
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       finish();

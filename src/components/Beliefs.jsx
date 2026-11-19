@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Reveal from "./Reveal.jsx";
 import BeliefIcon from "./BeliefIcon.jsx";
 import { beliefs } from "../data/beliefs.js";
+import { routes } from "../data/siteInfo.js";
 
 export default function Beliefs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -31,9 +33,9 @@ export default function Beliefs() {
             Seven truths are the foundation of our church: its membership, its leadership and
             everything we do.
           </p>
-          <a className="pill-button pill-button-gold" href="beliefs.html">
+          <Link className="pill-button pill-button-gold" to={routes.beliefs}>
             Read the full statement
-          </a>
+          </Link>
         </Reveal>
 
         <Reveal className="beliefs-explorer">
