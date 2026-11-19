@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { siteInfo } from "../data/siteInfo.js";
 
 const RAY_COUNT = 18;
@@ -37,9 +38,10 @@ export default function LoadingScreen() {
       </svg>
       <p className="loading-name">
         {nameWords.map((word, index) => (
-          <span key={word + index} style={{ animationDelay: `${(1.15 + index * 0.09).toFixed(2)}s` }}>
-            {word}{" "}
-          </span>
+          <Fragment key={word + index}>
+            {index > 0 && " "}
+            <span style={{ animationDelay: `${(1.15 + index * 0.09).toFixed(2)}s` }}>{word}</span>
+          </Fragment>
         ))}
       </p>
       <p className="loading-subtitle">{siteInfo.subtitle}</p>
