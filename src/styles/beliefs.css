@@ -1,0 +1,244 @@
+/* What We Believe: seven symbols; choosing one zooms it into the panel with its statement */
+.beliefs {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 90px) 0;
+}
+.beliefs-rays {
+  position: absolute;
+  left: -420px;
+  top: -420px;
+  width: 1100px;
+  height: 1100px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: repeating-conic-gradient(from 0deg, rgba(226, 182, 90, 0.16) 0deg 1.5deg, transparent 1.5deg 8deg);
+  -webkit-mask: radial-gradient(circle, transparent 14%, #000 20%, transparent 66%);
+  mask: radial-gradient(circle, transparent 14%, #000 20%, transparent 66%);
+  animation: beliefs-spin 90s linear infinite;
+}
+@keyframes beliefs-spin {
+  to { transform: rotate(360deg); }
+}
+
+.beliefs-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr;
+  gap: clamp(30px, 6vw, 80px);
+  align-items: center;
+}
+.beliefs-intro .section-title {
+  margin-bottom: 6px;
+}
+.beliefs-underline {
+  display: block;
+  width: 220px;
+  height: 14px;
+  margin: 4px 0 22px;
+  overflow: visible;
+}
+.beliefs-underline path {
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1.2s ease 0.5s;
+}
+.beliefs-intro.is-visible .beliefs-underline path {
+  stroke-dashoffset: 0;
+}
+.beliefs-lead {
+  max-width: 32em;
+  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* Line icons draw themselves when the section scrolls into view */
+.belief-icon {
+  display: block;
+  width: 46px;
+  height: 46px;
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.belief-icon path,
+.belief-icon circle {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1.6s ease 0.45s;
+}
+
+.belief-tiles {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.belief-tile {
+  appearance: none;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 14px 4px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font: 700 0.72rem/1.2 var(--font-ui);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+.belief-tile .belief-icon {
+  width: 30px;
+  height: 30px;
+}
+.belief-tile:hover {
+  transform: translateY(-3px);
+  border-color: rgba(226, 182, 90, 0.7);
+}
+.belief-tile[aria-pressed="true"] {
+  transform: translateY(-3px);
+  border-color: var(--gold-bright);
+  background: rgba(226, 182, 90, 0.16);
+}
+.beliefs-explorer.is-visible .belief-tile .belief-icon path,
+.beliefs-explorer.is-visible .belief-tile .belief-icon circle {
+  stroke-dashoffset: 0;
+}
+
+.belief-panel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 24px;
+  align-items: center;
+  min-height: 168px;
+  margin-top: 12px;
+  padding: 26px 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 3px solid var(--gold-bright);
+  background: rgba(255, 255, 255, 0.06);
+  transform-origin: 50% 0;
+}
+.belief-panel-number {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  font: 800 3.6rem/1 var(--font-sans);
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(226, 182, 90, 0.5);
+}
+.belief-panel-badge {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(226, 182, 90, 0.6);
+}
+.belief-panel-badge .belief-icon {
+  width: 52px;
+  height: 52px;
+}
+.belief-panel-badge .belief-icon path,
+.belief-panel-badge .belief-icon circle {
+  stroke-dashoffset: 0;
+}
+.belief-panel-text h3 {
+  margin-bottom: 8px;
+  padding-right: 70px;
+  font: 700 1.5rem/1.1 var(--font-sans);
+  letter-spacing: -0.02em;
+}
+.belief-panel-text p {
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.belief-panel.is-changing {
+  animation: panel-zoom 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.is-changing .belief-panel-badge {
+  animation: panel-grow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.is-changing .belief-panel-badge .belief-icon path,
+.is-changing .belief-panel-badge .belief-icon circle {
+  animation: panel-draw 1s ease 0.1s backwards;
+}
+.is-changing .belief-panel-text {
+  animation: panel-fade 0.5s ease 0.15s backwards;
+}
+@keyframes panel-zoom {
+  from { opacity: 0; transform: scale(0.94); }
+}
+@keyframes panel-grow {
+  from { transform: scale(0.4); }
+}
+@keyframes panel-draw {
+  from { stroke-dashoffset: 100; }
+}
+@keyframes panel-fade {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+.beliefs-hint {
+  margin-top: 12px;
+  font: 500 0.78rem/1 var(--font-ui);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 900px) {
+  .beliefs-layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .belief-tiles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .belief-panel {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 22px 20px;
+  }
+  .belief-panel-badge {
+    width: 72px;
+    height: 72px;
+  }
+  .belief-panel-badge .belief-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beliefs-rays {
+    animation: none;
+  }
+  .belief-icon path,
+  .belief-icon circle,
+  .beliefs-underline path {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+  .belief-panel.is-changing,
+  .is-changing .belief-panel-badge,
+  .is-changing .belief-panel-badge .belief-icon path,
+  .is-changing .belief-panel-badge .belief-icon circle,
+  .is-changing .belief-panel-text {
+    animation: none;
+  }
+  .belief-tile {
+    transition: none;
+  }
+}

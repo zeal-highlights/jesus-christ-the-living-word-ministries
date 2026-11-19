@@ -1,0 +1,125 @@
+/* Our city band: moving Canberra footage, centred headline inside a fine gold frame */
+.city-band {
+  min-height: 86vh;
+  text-align: center;
+}
+.city-band::before {
+  opacity: 0.8;
+}
+.city-band::after {
+  background: rgba(13, 24, 54, 0.22);
+}
+.city-band video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1) brightness(1);
+}
+.city-band > .city-content {
+  display: grid;
+  justify-items: center;
+  padding: 110px 0;
+}
+.city-band h2 {
+  max-width: none;
+  font-size: clamp(2.7rem, 6.8vw, 5.6rem);
+  line-height: 0.98;
+}
+.city-band h2 .accent {
+  display: block;
+}
+
+.city-frame {
+  position: absolute;
+  inset: 22px;
+  z-index: 2;
+  border: 1px solid rgba(226, 182, 90, 0.5);
+  pointer-events: none;
+}
+.city-frame::before,
+.city-frame::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--gold-bright);
+}
+.city-frame::before {
+  left: -2px;
+  top: -2px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.city-frame::after {
+  right: -2px;
+  bottom: -2px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.city-rule {
+  display: block;
+  width: 0;
+  height: 2px;
+  margin: 26px 0 22px;
+  background: var(--gold-bright);
+  transition: width 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.5s;
+}
+.is-visible .city-rule {
+  width: 120px;
+}
+
+.city-verse {
+  max-width: 30em;
+  font: italic 400 clamp(1.15rem, 2vw, 1.4rem) / 1.4 var(--font-serif);
+  color: rgba(255, 255, 255, 0.92);
+}
+.city-verse b {
+  display: block;
+  margin-top: 12px;
+  font: 700 0.72rem/1 var(--font-ui);
+  font-style: normal;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+.city-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+.city-details span {
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(13, 24, 54, 0.45);
+  font: 700 0.82rem/1 var(--font-ui);
+}
+
+@media (max-width: 800px) {
+  .city-frame {
+    inset: 12px;
+  }
+  .city-band {
+    min-height: 0;
+  }
+  .city-band > .city-content {
+    padding: 90px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .city-band video {
+    display: none;
+  }
+  .city-rule {
+    width: 120px;
+    transition: none;
+  }
+}

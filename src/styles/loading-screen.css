@@ -1,0 +1,132 @@
+/* Rays, cross and open Bible draw themselves, the name rises, then the screen opens from the centre. */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+  background: var(--deep-navy);
+  clip-path: circle(150% at 50% 50%);
+  transition: clip-path 1s cubic-bezier(0.7, 0, 0.2, 1), visibility 0s 1s;
+}
+.intro-finished .loading-screen {
+  clip-path: circle(0% at 50% 42%);
+  visibility: hidden;
+}
+
+.loading-screen svg {
+  width: min(230px, 56vw);
+  height: auto;
+  overflow: visible;
+}
+
+.loading-rays {
+  transform-origin: 120px 104px;
+  animation: loading-spin 14s linear infinite;
+}
+.loading-rays line {
+  stroke: var(--gold-bright);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 34;
+  stroke-dashoffset: 34;
+  animation: loading-draw 0.7s ease-out forwards, loading-pulse 2.4s ease-in-out 1.2s infinite;
+}
+.loading-ring {
+  fill: none;
+  stroke: rgba(226, 182, 90, 0.45);
+  stroke-width: 1.5;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transform-origin: 120px 104px;
+  transform: rotate(-90deg);
+  animation: loading-draw 1.5s ease-in-out 0.15s forwards;
+}
+.loading-cross {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: loading-draw 0.7s ease-out 0.45s forwards;
+}
+.loading-book {
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: loading-draw 1s ease-out 0.9s forwards;
+}
+.loading-book-cover {
+  stroke-width: 2;
+  opacity: 0.6;
+  animation-delay: 1.1s;
+}
+
+.loading-name {
+  margin-top: 26px;
+  overflow: hidden;
+  font: 600 clamp(1.5rem, 4.4vw, 2.3rem) / 1.15 var(--font-brand);
+}
+.loading-name span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: loading-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.loading-subtitle {
+  margin-top: 12px;
+  font: 500 0.72rem/1 var(--font-ui);
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  letter-spacing: 0.6em;
+  opacity: 0;
+  animation: loading-settle 0.9s ease-out 1.75s forwards;
+}
+.loading-progress {
+  width: 160px;
+  height: 2px;
+  margin-top: 26px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+.loading-progress i {
+  display: block;
+  height: 100%;
+  background: var(--gold-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: loading-fill 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes loading-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes loading-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes loading-pulse {
+  50% { opacity: 0.35; }
+}
+@keyframes loading-rise {
+  to { transform: none; }
+}
+@keyframes loading-settle {
+  to { opacity: 1; letter-spacing: 0.24em; }
+}
+@keyframes loading-fill {
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen {
+    display: none;
+  }
+}

@@ -1,0 +1,17 @@
+.call-to-action {
+  padding: clamp(60px, 8vw, 96px) 0;
+  text-align: center;
+  background: var(--gold);
+  color: var(--deep-navy);
+}
+.call-to-action h2 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  color: var(--deep-navy);
+}
+.call-to-action .accent {
+  color: var(--deep-navy);
+}
+.call-to-action p {
+  max-width: 30em;
+  margin: 16px auto 26px;
+}

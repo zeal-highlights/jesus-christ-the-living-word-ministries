@@ -1,0 +1,64 @@
+.feature-photo {
+  margin: 0 0 46px;
+}
+.feature-photo img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.feature-photo figcaption {
+  margin-top: 12px;
+  font: 700 0.74rem/1 var(--font-sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.pillar {
+  padding-top: 14px;
+  border-top: 1.5px solid var(--navy);
+}
+.pillar img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 16px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.pillar:hover img {
+  transform: scale(1.02);
+}
+.pillar-number {
+  font: 700 0.76rem/1 var(--font-sans);
+  letter-spacing: 0.08em;
+  color: var(--gold-text);
+}
+.pillar h3 {
+  margin: 6px 0;
+  font: 700 1.5rem/1.1 var(--font-sans);
+  letter-spacing: -0.02em;
+}
+.pillar p {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 800px) {
+  .feature-photo img {
+    aspect-ratio: 4 / 3;
+  }
+  .pillar-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar img {
+    transition: none;
+  }
+}

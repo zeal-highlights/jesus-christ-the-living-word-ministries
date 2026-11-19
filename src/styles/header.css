@@ -1,0 +1,213 @@
+/* Navy pill bar with logo, name, links and a gold button. It shrinks once the page is scrolled. */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  padding: 14px 16px 0;
+  color: #fff;
+  pointer-events: none;
+  transition: padding 0.35s ease;
+}
+
+.header-bar {
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  height: 64px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 8px 0 10px;
+  border-radius: 999px;
+  background: rgba(20, 35, 75, 0.72);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 34px rgba(13, 24, 54, 0.28);
+  transition: height 0.35s ease, max-width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.35s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  color: #fff;
+  text-decoration: none;
+}
+.brand img {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  transition: width 0.35s ease, height 0.35s ease;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.brand-name {
+  font: 600 1.1rem/1.15 var(--font-brand);
+  letter-spacing: -0.005em;
+  transition: font-size 0.35s ease;
+}
+.brand-subtitle {
+  max-height: 14px;
+  margin-top: 4px;
+  overflow: hidden;
+  font: 500 0.58rem/1 var(--font-ui);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+}
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.main-navigation a {
+  white-space: nowrap;
+  padding: 11px 13px;
+  border-radius: 999px;
+  font: 600 0.88rem/1 var(--font-ui);
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.main-navigation a:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+.main-navigation a.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  margin-left: 8px;
+  padding: 0 22px;
+  font-weight: 700;
+  color: var(--deep-navy);
+  background: var(--gold);
+  transition: height 0.35s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+.main-navigation a.nav-cta:hover {
+  background: var(--gold-bright);
+  transform: translateY(-1px);
+}
+
+.menu-toggle {
+  display: none;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  margin: 7px 0;
+  background: #fff;
+  transition: transform 0.25s;
+}
+.menu-toggle[aria-expanded="true"] span:first-child {
+  transform: translateY(4.5px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] span:last-child {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* Shrunk state once scrolled */
+.site-header.is-scrolled {
+  padding-top: 8px;
+}
+.is-scrolled .header-bar {
+  height: 52px;
+  max-width: 1040px;
+  background: rgba(20, 35, 75, 0.9);
+}
+.is-scrolled .brand img {
+  width: 36px;
+  height: 36px;
+}
+.is-scrolled .brand-name {
+  font-size: 1rem;
+}
+.is-scrolled .brand-subtitle {
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+}
+.is-scrolled .nav-cta {
+  height: 38px;
+}
+
+@media (max-width: 1040px) {
+  .site-header {
+    padding: 10px 10px 0;
+  }
+  .header-bar {
+    height: 58px;
+  }
+  .brand img {
+    width: 40px;
+    height: 40px;
+  }
+  .brand-name {
+    font-size: 0.95rem;
+  }
+  .brand-subtitle {
+    font-size: 0.52rem;
+    letter-spacing: 0.16em;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .main-navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 12px 14px;
+    background: rgba(20, 35, 75, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 22px;
+    box-shadow: 0 16px 40px rgba(13, 24, 54, 0.4);
+  }
+  .main-navigation.is-open {
+    display: flex;
+  }
+  .main-navigation a {
+    padding: 15px 14px;
+    font-size: 1.02rem;
+    border-radius: 12px;
+  }
+  .main-navigation a.nav-cta {
+    justify-content: center;
+    margin: 8px 0 0;
+    border-radius: 999px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .header-bar,
+  .brand img,
+  .brand-name,
+  .brand-subtitle,
+  .main-navigation a {
+    transition: none;
+  }
+}

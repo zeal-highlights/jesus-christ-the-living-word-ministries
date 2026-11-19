@@ -1,0 +1,76 @@
+/* Full-width photo bands with a navy duotone overlay (hero, city, verse) */
+.band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 62vh;
+  overflow: hidden;
+  color: #fff;
+  background: #000;
+}
+.band > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1) brightness(0.9);
+}
+.band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--navy);
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
+.band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(13, 24, 54, 0.35);
+}
+.band > .container {
+  position: relative;
+  z-index: 2;
+  padding: 90px 0;
+}
+.band h1,
+.band h2 {
+  font-size: clamp(2.4rem, 5.6vw, 4rem);
+  max-width: 9.5em;
+}
+.band .accent {
+  color: var(--gold-bright);
+}
+.band .eyebrow {
+  color: var(--gold-bright);
+}
+
+/* Verse band */
+.verse-band {
+  text-align: center;
+}
+.verse-band::after {
+  background: rgba(13, 24, 54, 0.3);
+}
+.verse-band blockquote {
+  max-width: 17em;
+  margin: 0 auto;
+  font: italic 400 clamp(1.9rem, 4.4vw, 3.2rem) / 1.15 var(--font-serif);
+}
+.verse-reference {
+  margin-top: 22px;
+  font: 700 0.76rem/1 var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+@media (max-width: 800px) {
+  .band {
+    min-height: 56vh;
+  }
+}

@@ -1,0 +1,119 @@
+/* Hero: navy-toned photo, centred headline, moving gold ticker */
+.hero {
+  min-height: 100svh;
+}
+.hero > .container {
+  display: grid;
+  justify-items: center;
+  padding: 120px 0 130px;
+  text-align: center;
+}
+.hero-cross {
+  position: relative;
+  width: 34px;
+  height: 46px;
+  margin-bottom: 24px;
+}
+.hero-cross::before,
+.hero-cross::after {
+  content: "";
+  position: absolute;
+  background: var(--gold-bright);
+}
+.hero-cross::before {
+  left: 15px;
+  top: 0;
+  width: 4px;
+  height: 46px;
+}
+.hero-cross::after {
+  left: 4px;
+  top: 12px;
+  width: 26px;
+  height: 4px;
+}
+.hero-eyebrow {
+  margin-bottom: 18px;
+}
+.hero-title {
+  max-width: none;
+  font-size: clamp(2.9rem, 7.4vw, 6.2rem);
+  line-height: 0.98;
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 1s ease 0.35s, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s;
+}
+.intro-finished .hero-title {
+  opacity: 1;
+  transform: none;
+}
+.hero-title .accent {
+  display: block;
+  font-size: 1.11em;
+}
+.hero-subtitle {
+  margin: 22px 0 28px;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ticker {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  height: 78px;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--gold);
+  color: var(--deep-navy);
+}
+.ticker p {
+  font: 800 2rem/1 var(--font-sans);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  animation: ticker-scroll 60s linear infinite;
+}
+.ticker i {
+  margin: 0 26px;
+  font: italic 400 2.2rem/1 var(--font-serif);
+  text-transform: none;
+}
+@keyframes ticker-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 800px) {
+  .hero > .container {
+    padding: 110px 0 96px;
+  }
+  .ticker {
+    height: 56px;
+  }
+  .ticker p {
+    font-size: 1.35rem;
+  }
+  .ticker i {
+    margin: 0 16px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ticker p {
+    animation: none;
+  }
+}
