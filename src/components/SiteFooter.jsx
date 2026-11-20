@@ -18,7 +18,15 @@ function EmailIcon() {
   );
 }
 
-/** Phone and email links with icons; reused in the footer and on the Visit page. */
+function FacebookIcon() {
+  return (
+    <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" />
+    </svg>
+  );
+}
+
+/** Phone, email and Facebook links with icons; reused in the footer and on the Visit page. */
 export function ContactLinks() {
   return (
     <p className="contact-list">
@@ -29,6 +37,10 @@ export function ContactLinks() {
       <a href={`mailto:${siteInfo.email}`}>
         <EmailIcon />
         {siteInfo.email}
+      </a>
+      <a href={siteInfo.facebookUrl} target="_blank" rel="noopener">
+        <FacebookIcon />
+        Follow us on Facebook
       </a>
     </p>
   );

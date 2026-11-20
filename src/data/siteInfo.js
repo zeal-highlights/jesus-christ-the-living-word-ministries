@@ -10,6 +10,7 @@ export const siteInfo = {
   phoneDisplay: "0452 404 536",
   phoneLink: "tel:+61452404536",
   email: "jcthelivingword@gmail.com",
+  facebookUrl: "https://www.facebook.com/share/18abdkAsyn/",
   directionsUrl:
     "https://www.google.com/maps/search/?api=1&query=86+Ainsworth+Street+Mawson+ACT",
   mapEmbedUrl:
